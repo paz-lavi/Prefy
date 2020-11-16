@@ -1,4 +1,4 @@
-package com.paz.prefy;
+package com.paz.prefy_lib;
 
 
 import android.content.Context;
