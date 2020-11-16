@@ -18,7 +18,7 @@
   * [Generic Array](https://github.com/paz-lavi/Prefy/tree/master#generic-array)
   * [ArrayList](https://github.com/paz-lavi/Prefy/tree/master#arraylist)
   * [HashMap](https://github.com/paz-lavi/Prefy/tree/master#hashmap)
-  * [Type](type)
+  * [Type](https://github.com/paz-lavi/Prefy/tree/master#type)
 * [License](https://github.com/paz-lavi/Prefy/blob/master/README.md#license)   
   
   
