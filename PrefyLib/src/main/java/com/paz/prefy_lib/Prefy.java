@@ -278,7 +278,7 @@ public class Prefy {
      * @param key   - key for the value
      * @param value - the value to save
      */
-    public void putDouble(String key, long value) {
+    public void putDouble(String key, double value) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong(key, Double.doubleToRawLongBits(value));
         editor.apply();
@@ -291,7 +291,7 @@ public class Prefy {
      * @param value - the value to save
      * @return Returns true if the new values were successfully written to persistent storage.
      */
-    public boolean putDoubleSync(String key, long value) {
+    public boolean putDoubleSync(String key, double value) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong(key, Double.doubleToRawLongBits(value));
         return editor.commit();
@@ -304,8 +304,8 @@ public class Prefy {
      * @param defValue - default in case the key not exist
      * @return if the key exist his value will returned else devValue
      */
-    public double getDouble(String key, long defValue) {
-        return Double.longBitsToDouble(sharedPreferences.getLong(key, defValue));
+    public double getDouble(String key, double defValue) {
+        return Double.longBitsToDouble(sharedPreferences.getLong(key, Double.doubleToRawLongBits(defValue)));
     }
 
 
