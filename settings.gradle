@@ -1,0 +1,3 @@
+include ':Prefy'
+include ':app'
+rootProject.name = "Prefy"
