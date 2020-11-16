@@ -7,8 +7,18 @@
 * [Integration](https://github.com/paz-lavi/Prefy/blob/master/README.md#integration)  
 * [How To Use](https://github.com/paz-lavi/Prefy/blob/master/README.md#how-to-use)  
 * [API](https://github.com/paz-lavi/Prefy/blob/master/README.md#api)  
-* * String
-* * Boolean
+  * [String](https://github.com/paz-lavi/Prefy/tree/master#string)
+  * [Boolean](https://github.com/paz-lavi/Prefy/tree/master#boolean)
+  * [Integer](https://github.com/paz-lavi/Prefy/tree/master#integer)
+  * [Float](float)
+  * [Long](https://github.com/paz-lavi/Prefy/tree/master#long)
+  * [Double](https://github.com/paz-lavi/Prefy/tree/master#double)
+  * [String Set](https://github.com/paz-lavi/Prefy/tree/master#string-set)
+  * [Generic Object](https://github.com/paz-lavi/Prefy/tree/master#generic-object)
+  * [Generic Array](https://github.com/paz-lavi/Prefy/tree/master#generic-array)
+  * [ArrayList](https://github.com/paz-lavi/Prefy/tree/master#arraylist)
+  * [HashMap](https://github.com/paz-lavi/Prefy/tree/master#hashmap)
+  * [Type](type)
 * [License](https://github.com/paz-lavi/Prefy/blob/master/README.md#license)   
   
   
