@@ -10,7 +10,7 @@
   * [String](https://github.com/paz-lavi/Prefy/tree/master#string)
   * [Boolean](https://github.com/paz-lavi/Prefy/tree/master#boolean)
   * [Integer](https://github.com/paz-lavi/Prefy/tree/master#integer)
-  * [Float](float)
+  * [Float](https://github.com/paz-lavi/Prefy/tree/master#float)
   * [Long](https://github.com/paz-lavi/Prefy/tree/master#long)
   * [Double](https://github.com/paz-lavi/Prefy/tree/master#double)
   * [String Set](https://github.com/paz-lavi/Prefy/tree/master#string-set)
