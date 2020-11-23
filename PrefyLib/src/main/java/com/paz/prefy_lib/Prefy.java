@@ -504,5 +504,15 @@ public class Prefy {
         return gson.fromJson(json, typeOfHashMap);
     }
 
+    /**
+     * remove key from shared preferences
+     *
+     * @param key - the key that should remove
+     */
+    public void remove(String key) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(key);
+        editor.apply();
+    }
 
 }
