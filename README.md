@@ -43,7 +43,7 @@ Add the dependency
   
 ```css  
    dependencies {  
-	   implementation 'com.github.paz-lavi:Prefy:1.0.3'  
+	   implementation 'com.github.paz-lavi:Prefy:1.0.4'  
    }  
 ```  
 ##  How To Use  
