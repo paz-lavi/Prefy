@@ -8,8 +8,8 @@
 ## Table of Contents
 
 *  [Usage](https://github.com/paz-lavi/Prefy/blob/master/README.md#usage)
- *  [What's New](https://github.com/paz-lavi/Prefy/blob/master/README.md#what's-new)
-    *  [V1.0.5:](https://github.com/paz-lavi/Prefy/blob/master/README.md#v1.0.5:)
+ *  [What's New](https://github.com/paz-lavi/Prefy/blob/master/README.md#whats-new)
+    *  [V1.0.5:](https://github.com/paz-lavi/Prefy/blob/master/README.md#v105)
  *  [Integration](https://github.com/paz-lavi/Prefy/blob/master/README.md#integration)
 
 *  [How To Use](https://github.com/paz-lavi/Prefy/blob/master/README.md#how-to-use)
