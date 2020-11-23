@@ -305,7 +305,7 @@ public class Prefy {
     }
 
     /**
-     * save ___ to shared preferences if the key is not already exist
+     * save Int to shared preferences if the key is not already exist
      *
      * @param key   - key for the value
      * @param value - the value to save
@@ -778,7 +778,7 @@ public class Prefy {
     }
 
     /**
-     * save ___ to shared preferences if the key is not already exist
+     * save Array to shared preferences if the key is not already exist
      *
      * @param key   - key for the value
      * @param value - the value to save
@@ -952,7 +952,7 @@ public class Prefy {
      * @param value - the value to save
      * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
      */
-    public <E, T> PrefyMsg put___SyncIfKeyNotExist(String key, HashMap<E, T> value) {
+    public <E, T> PrefyMsg putHashMapSyncIfKeyNotExist(String key, HashMap<E, T> value) {
         if (isKeyExist(key)) {
             return putHashMapSync(key, value) ? saved_successfully : not_saved;
         }
