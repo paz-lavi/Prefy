@@ -18,6 +18,7 @@
   * [Generic Array](https://github.com/paz-lavi/Prefy/tree/master#generic-array)
   * [ArrayList](https://github.com/paz-lavi/Prefy/tree/master#arraylist)
   * [HashMap](https://github.com/paz-lavi/Prefy/tree/master#hashmap)
+  * [Remove](https://github.com/paz-lavi/Prefy/tree/master#remove)
   * [Type](https://github.com/paz-lavi/Prefy/tree/master#type)
 * [License](https://github.com/paz-lavi/Prefy/blob/master/README.md#license)   
   
@@ -307,7 +308,7 @@ HashMap<String, Integer> map4;
 map3 = prefy.getHashMap("key1", new HashMap<String, String>());  
 map4 = prefy.getHashMap("key2", new HashMap<String, Integer>());
 ```  
-### String
+### Remove
 ```Java  
  public void remove(String key);
 ```  
