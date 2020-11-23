@@ -21,6 +21,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
+import static com.paz.prefy_lib.PrefyMsg.key_already_exist;
+import static com.paz.prefy_lib.PrefyMsg.not_saved;
+import static com.paz.prefy_lib.PrefyMsg.saved_successfully;
+
 /**
  * Class for using SharedPreferences easily, even with encryption
  */
@@ -57,9 +61,7 @@ public class Prefy {
                         masterKey, // masterKey created above
                         EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
-            } catch (GeneralSecurityException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (GeneralSecurityException | IOException e) {
                 e.printStackTrace();
             }
         } else {
@@ -129,6 +131,49 @@ public class Prefy {
 
 
     /**
+     * save String to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public boolean putStringIfKeyNotExist(String key, String value) {
+        if (isKeyExist(key)) {
+            putString(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save String to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public PrefyMsg putStringSyncIfKeyNotExist(String key, String value) {
+        if (isKeyExist(key)) {
+            return putStringSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved String and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public String getStringAndRemoveKey(String key, String defValue) {
+        String res = getString(key, defValue);
+        remove(key);
+        return res;
+    }
+
+
+    /**
      * save boolean to shared preferences
      *
      * @param key   - key for the value
@@ -162,6 +207,49 @@ public class Prefy {
      */
     public boolean getBoolean(String key, boolean defValue) {
         return sharedPreferences.getBoolean(key, defValue);
+    }
+
+
+    /**
+     * save Boolean to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public boolean putBooleanIfKeyNotExist(String key, boolean value) {
+        if (isKeyExist(key)) {
+            putBoolean(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save Boolean to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public PrefyMsg putBooleanSyncIfKeyNotExist(String key, boolean value) {
+        if (isKeyExist(key)) {
+            return putBooleanSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved Boolean and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public boolean getBooleanAndRemoveKey(String key, boolean defValue) {
+        boolean res = getBoolean(key, defValue);
+        remove(key);
+        return res;
     }
 
     /**
@@ -198,6 +286,49 @@ public class Prefy {
      */
     public int getInt(String key, int defValue) {
         return sharedPreferences.getInt(key, defValue);
+    }
+
+
+    /**
+     * save Int to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public boolean putIntIfKeyNotExist(String key, int value) {
+        if (isKeyExist(key)) {
+            putInt(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save ___ to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public PrefyMsg putIntSyncIfKeyNotExist(String key, int value) {
+        if (isKeyExist(key)) {
+            return putIntSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved Int and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public int getIntAndRemoveKey(String key, int defValue) {
+        int res = getInt(key, defValue);
+        remove(key);
+        return res;
     }
 
     /**
@@ -237,6 +368,48 @@ public class Prefy {
     }
 
     /**
+     * save Float to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public boolean putFloatIfKeyNotExist(String key, float value) {
+        if (isKeyExist(key)) {
+            putFloat(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save Float to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public PrefyMsg putFloatSyncIfKeyNotExist(String key, float value) {
+        if (isKeyExist(key)) {
+            return putFloatSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved Float and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public float getFloatAndRemoveKey(String key, float defValue) {
+        float res = getFloat(key, defValue);
+        remove(key);
+        return res;
+    }
+
+    /**
      * save long to shared preferences
      *
      * @param key   - key for the value
@@ -270,6 +443,48 @@ public class Prefy {
      */
     public long getLong(String key, long defValue) {
         return sharedPreferences.getLong(key, defValue);
+    }
+
+    /**
+     * save Long to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public boolean putLongIfKeyNotExist(String key, long value) {
+        if (isKeyExist(key)) {
+            putLong(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save Long to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public PrefyMsg putLongSyncIfKeyNotExist(String key, long value) {
+        if (isKeyExist(key)) {
+            return putLongSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved Long and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public long getLongAndRemoveKey(String key, long defValue) {
+        long res = getLong(key, defValue);
+        remove(key);
+        return res;
     }
 
     /**
@@ -308,6 +523,47 @@ public class Prefy {
         return Double.longBitsToDouble(sharedPreferences.getLong(key, Double.doubleToRawLongBits(defValue)));
     }
 
+    /**
+     * save Double to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public boolean putDoubleIfKeyNotExist(String key, double value) {
+        if (isKeyExist(key)) {
+            putDouble(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save Double to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public PrefyMsg putDoubleSyncIfKeyNotExist(String key, double value) {
+        if (isKeyExist(key)) {
+            return putDoubleSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved Double and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public double getDoubleAndRemoveKey(String key, double defValue) {
+        double res = getDouble(key, defValue);
+        remove(key);
+        return res;
+    }
 
     /**
      * save String set to shared preferences
@@ -343,6 +599,48 @@ public class Prefy {
      */
     public Set<String> getStringSet(String key, Set<String> defValue) {
         return sharedPreferences.getStringSet(key, defValue);
+    }
+
+    /**
+     * save StringSet to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public boolean putStringSetIfKeyNotExist(String key, Set<String> value) {
+        if (isKeyExist(key)) {
+            putStringSet(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save StringSet to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public PrefyMsg putStringSetSyncIfKeyNotExist(String key, Set<String> value) {
+        if (isKeyExist(key)) {
+            return putStringSetSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved StringSet and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public Set<String> getStringSetAndRemoveKey(String key, Set<String> defValue) {
+        Set<String> res = getStringSet(key, defValue);
+        remove(key);
+        return res;
     }
 
     /**
@@ -384,6 +682,48 @@ public class Prefy {
     }
 
     /**
+     * save Object to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public <T> boolean putObjectIfKeyNotExist(String key, T value) {
+        if (isKeyExist(key)) {
+            putObject(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save Object to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public <T> PrefyMsg putObjectSyncIfKeyNotExist(String key, T value) {
+        if (isKeyExist(key)) {
+            return putObjectSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved Object and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public <T> T getObjectAndRemoveKey(String key, T defValue, Class<T> type) {
+        T res = getObject(key, defValue, type);
+        remove(key);
+        return res;
+    }
+
+    /**
      * save any type of array to shared preferences
      *
      * @param key   - key for the value
@@ -420,6 +760,48 @@ public class Prefy {
             return defValue;
 
         return gson.fromJson(json, type);
+    }
+
+    /**
+     * save Array to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public <T> boolean putArrayIfKeyNotExist(String key, T[] value) {
+        if (isKeyExist(key)) {
+            putArray(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save ___ to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public <T> PrefyMsg putArraySyncIfKeyNotExist(String key, T[] value) {
+        if (isKeyExist(key)) {
+            return putArraySync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved Array and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public <T> T[] getArrayAndRemoveKey(String key, T[] defValue, Type type) {
+        T[] res = getArray(key, defValue, type);
+        remove(key);
+        return res;
     }
 
     /**
@@ -464,6 +846,49 @@ public class Prefy {
         return new ArrayList<T>(Arrays.asList(gson.fromJson(json, type)));
     }
 
+
+    /**
+     * save ArrayList to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public <T> boolean putArrayListIfKeyNotExist(String key, ArrayList<T> value) {
+        if (isKeyExist(key)) {
+            putArrayList(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save ArrayList to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public <T> PrefyMsg putArrayListSyncIfKeyNotExist(String key, ArrayList<T> value) {
+        if (isKeyExist(key)) {
+            return putArrayListSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved ArrayList and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public <T> ArrayList<T> getArrayListAndRemoveKey(String key, ArrayList<T> defValue) {
+        ArrayList<T> res = getArrayList(key, defValue);
+        remove(key);
+        return res;
+    }
+
     /**
      * save any type of HasMap to shared preferences
      *
@@ -504,6 +929,49 @@ public class Prefy {
         return gson.fromJson(json, typeOfHashMap);
     }
 
+
+    /**
+     * save HashMap to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return true if the value added, false if the key already exist
+     */
+    public <E, T> boolean putHashMapIfKeyNotExist(String key, HashMap<E, T> value) {
+        if (isKeyExist(key)) {
+            putHashMap(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * save HashMap to shared preferences if the key is not already exist
+     *
+     * @param key   - key for the value
+     * @param value - the value to save
+     * @return If the key already exist return key_already_exist else Returns saved_successfully if the new values were successfully written to persistent storage and not_saved if not.
+     */
+    public <E, T> PrefyMsg put___SyncIfKeyNotExist(String key, HashMap<E, T> value) {
+        if (isKeyExist(key)) {
+            return putHashMapSync(key, value) ? saved_successfully : not_saved;
+        }
+        return key_already_exist;
+    }
+
+    /**
+     * get the saved HashMap and remove it from shared preferences
+     *
+     * @param key      - key for the requested value
+     * @param defValue - default in case the key not exist
+     * @return if the key exist his value will returned else devValue
+     */
+    public <E, T> HashMap<E, T> getHashMapAndRemoveKey(String key, HashMap<E, T> defValue) {
+        HashMap<E, T> res = getHashMap(key, defValue);
+        remove(key);
+        return res;
+    }
+
     /**
      * remove key from shared preferences
      *
@@ -514,5 +982,16 @@ public class Prefy {
         editor.remove(key);
         editor.apply();
     }
+
+    /**
+     * check if key exist in sharedPreferences
+     *
+     * @param key - key to check
+     * @return - true if exist false if not
+     */
+    private boolean isKeyExist(String key) {
+        return sharedPreferences.contains(key);
+    }
+
 
 }
