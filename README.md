@@ -307,6 +307,18 @@ HashMap<String, Integer> map4;
 map3 = prefy.getHashMap("key1", new HashMap<String, String>());  
 map4 = prefy.getHashMap("key2", new HashMap<String, Integer>());
 ```  
+### String
+```Java  
+ public void remove(String key);
+```  
+example: 
+```Java  
+prefy.putString("key1", "prefy is ");  
+prefy.putStringSync("key2", "awesome");  
+prefy.remove("key1");  
+prefy.remove("key2");
+```  
+
 
 ### Type
 ```Java  
